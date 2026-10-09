@@ -7,6 +7,7 @@ A sperimental software platform for analysing and visualising Formula 1 race dat
 The goal of this project is to develop a complete software platform capable of collecting, processing, analysing and visualising Formula 1 data.
 
 The project will progressively evolve from a Python-based data analysis tool into a modular application with a backend, database, API and interactive dashboard.
+The Data taken in consideration are based in both historical and live session.
 
 ## Main Features
 
