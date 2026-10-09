@@ -10,9 +10,10 @@ def get_race_pace(session):
 
     laps = laps[
         laps["LapTime"].notna()
-        & (laps["PitInTime"].isna())
-        & (laps["PitOutTime"].isna())
-    ]
+        & laps["PitInTime"].isna()
+        & laps["PitOutTime"].isna()
+        & laps["IsAccurate"].eq(True)
+    ].copy()
 
     laps["LapTimeSeconds"]= laps["LapTime"].dt.total_seconds()
     laps["LapNumber"] = laps["LapNumber"].astype(int)
@@ -34,6 +35,7 @@ def filter_completed_drivers(laps, race_results):
     ]["Abbreviation"]
 
     return laps[laps["Driver"].isin(completed_drivers)].copy()
+
 def filter_race_pace(laps):
     """
     Remove unusually slow laps for each driver using the IQR method.
